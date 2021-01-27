@@ -15,6 +15,11 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     * Método que permite cargar y mostrar una escena.
+     * @param stage escena que se ha de mostrar.
+     * @throws IOException 
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("/com/vistas/Principal"));
@@ -23,15 +28,21 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
+    /**
+     * Método que interpreta un FXML para crear una escena a partir de él.
+     * @param fxml ruta en la que se encuentra el FXML y nombre del archivo.
+     * @return devuelve el objeto listo para poder mostrarse
+     * @throws IOException 
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     * Método principal.
+     * @param args 
+     */
     public static void main(String[] args) {
         launch();
     }
